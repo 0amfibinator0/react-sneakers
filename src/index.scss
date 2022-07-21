@@ -111,25 +111,45 @@ header {
   background: #FFFFFF;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  display: flex;
+  flex-direction: column;
 
   h2 {
     margin: 0;
   }
+  .items {
+    flex: 1;
+  }
 }
 .cartTotalBlock {
-  li {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 20px;
-
-    div {
-      flex: 1;
-      height: 1px;
-      border-bottom: 1px dashed #dfdfdf;
-      position: relative;
-      top: -4px;
-      margin: 0 7px;
+  ul {
+    display: block;
+    margin-bottom: 40px !important;
+    li {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+  
+      div {
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed #dfdfdf;
+        position: relative;
+        top: -4px;
+        margin: 0 7px;
+      }
     }
+  }
+
+  button {
+    width: 100%;
+    height: 55px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 .cartItem {
