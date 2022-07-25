@@ -9,7 +9,7 @@ function Header() {
         </div>
       </div>
       <ul className="d-flex">
-        <li className="mr-30">
+        <li className="mr-30 d-flex align-center">
           <img width={18} height={18} src="/img/cart.svg" alt="" />
           <span>1205 руб.</span>
         </li>
