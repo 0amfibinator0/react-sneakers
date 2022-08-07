@@ -22,7 +22,7 @@ function App() {
       .then((res) => {
         setCartItems(res.data);
       });
-    axios.get('https://62e16e35fa99731d75d66e03.mockapi.io/favourites')
+    axios.get('https://62e16e35fa99731d75d66e03.mockapi.io/favourites ')
       .then((res) => {
         setFavourites(res.data);
       });
@@ -38,13 +38,16 @@ function App() {
     setCartItems((prev) => prev.filter(item => item.id !== id));
   }
 
-  const onAddToFavourite = (obj) => {
-    if (favourites.find(favObj => favObj.id === obj.id)) {
-      axios.delete(`https://62e16e35fa99731d75d66e03.mockapi.io/favourites/${obj.id}`);
-      setFavourites((prev) => [...prev, obj]);
-    } else {
-      setFavourites((prev) => prev.filter(item => item.id !== obj.id));
-      axios.post('https://62e16e35fa99731d75d66e03.mockapi.io/favourites', obj);
+  const onAddToFavourite = async (obj) => {
+    try {
+      if (favourites.find(favObj => favObj.id === obj.id)) {
+        axios.delete(`https://62e16e35fa99731d75d66e03.mockapi.io/favourites/${obj.id}`);
+      } else {
+        const { data } = await axios.post('https://62e16e35fa99731d75d66e03.mockapi.io/favourites', obj);
+        setFavourites((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Не удалось добавить в фавориты')
     }
   }
 
@@ -57,7 +60,7 @@ function App() {
     <Header onClickCart={() => setCartOpened(true)}/>
 
     <Routes>
-      <Route path="/" element={<Home 
+      <Route path="/" exact element={<Home 
         items={items}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
@@ -65,13 +68,11 @@ function App() {
         onAddToFavourite={onAddToFavourite}
         onAddToCart={onAddToCart}
       />}/>
-      <Route path="/favourites" element={<Favourites
+      <Route path="/favourites" exact element={<Favourites
         items={favourites}
         onAddToFavourite={onAddToFavourite}
       />}/>
     </Routes>
-
-    
   </div>
 }
 

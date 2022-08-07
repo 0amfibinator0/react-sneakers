@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Header(props) {
   return (
-    <header header className="d-flex justify-between align-center p-40">
+    <header className="d-flex justify-between align-center p-40">
         <Link to='/'>
           <div className="d-flex align-center">
             <img className="logo" src="/img/logo.png" alt="logo" />
@@ -18,7 +18,9 @@ function Header(props) {
           <span>1205 руб.</span>
         </li>
         <li className="mr-20 d-flex align-center cu-p">
-          <Link to='/favourites'><img width={18} height={18} src="/img/heart.svg" alt="Закладки" /></Link>
+          <Link to='/favourites'>
+            <img width={18} height={18} src="/img/heart.svg" alt="Закладки" />
+          </Link>
         </li>
         <li className="d-flex align-center cu-p">
           <img width={18} height={18} src="/img/user.svg" alt="Пользователь" />

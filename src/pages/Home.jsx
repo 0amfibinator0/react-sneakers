@@ -15,11 +15,9 @@ function Home({items, searchValue, setSearchValue, onChangeSearchInput, onAddToF
         {items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
           <Card
             key={index}
-            title={item.title}
-            price={item.price}
-            imageUrl={item.imageUrl}
             onFavourite={(obj) => onAddToFavourite(obj)}
             onPlus={(obj) => onAddToCart(obj)}
+            {...item}
           />
         ))}
       </div>

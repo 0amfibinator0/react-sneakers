@@ -19,8 +19,8 @@ function Card({ id, title, imageUrl, price, onFavourite, onPlus, favourited = fa
 
   return (
     <div className={styles.card}>
-      <div className={styles.favourite} onClick={onFavourite}>
-        <img onClick={onClickFavourite} src={isFavourite ? "/img/liked.svg" : "/img/unliked.svg"} alt="" />
+      <div className={styles.favourite} onClick={onClickFavourite}>
+        <img src={isFavourite ? "/img/liked.svg" : "/img/unliked.svg"} alt="Like" />
       </div>
       <img className="sneakers-img" src={imageUrl} alt="sneakers" />
       <h5>{title}</h5>
