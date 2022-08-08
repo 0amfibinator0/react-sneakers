@@ -29,8 +29,18 @@ function App() {
     }, []);
 
   const onAddToCart = (obj) => {
-    axios.post('https://62e16e35fa99731d75d66e03.mockapi.io/cart', obj);
-    setCartItems((prev) => [...prev, obj]);
+    console.log(obj);
+    try {
+      if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+        axios.delete(`https://62e16e35fa99731d75d66e03.mockapi.io/cart/${obj.id}`);
+        setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
+      } else {
+        axios.post('https://62e16e35fa99731d75d66e03.mockapi.io/cart', obj);
+        setCartItems((prev) => [...prev, obj]);
+      }
+    } catch (error) {
+      
+    }
   }
 
   const onRemoveItem = (id) => {
