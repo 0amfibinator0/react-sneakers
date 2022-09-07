@@ -15,8 +15,8 @@ function Card({ id, title, imageUrl, price, onFavourite, onPlus, favourited = fa
     setIsFavourite(!isFavourite);
   }
 
-  React.useEffect(() => {
-  }, [isAdded]);
+  // React.useEffect(() => {
+  // }, [isAdded]);
 
   return (
     <div className={styles.card}>

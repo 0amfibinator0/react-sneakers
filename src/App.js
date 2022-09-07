@@ -30,7 +30,6 @@ function App() {
   }, []);
 
   const onAddToCart = (obj) => {
-    console.log(obj);
     try {
       if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
         axios.delete(`https://62e16e35fa99731d75d66e03.mockapi.io/cart/${obj.id}`);

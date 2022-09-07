@@ -1,16 +1,16 @@
 import Card from '../components/Card';
 
-function Home({items, cartItems, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart}) {
+function Home({items, cartItems, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart, isLoading}) {
   
   const renderItems = () => {
-    
-    return items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
+    const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
+    return (isLoading ? [...Array(10)] : filtredItems).map((item, index) => (
       <Card
         key={index}
         onFavourite={(obj) => onAddToFavourite(obj)}
         onPlus={(obj) => onAddToCart(obj)}
-        added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
-        loading={false}
+        added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
+        loading={isLoading}
         {...item}
       />
     ))
