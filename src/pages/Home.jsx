@@ -4,12 +4,13 @@ function Home({items, cartItems, searchValue, setSearchValue, onChangeSearchInpu
   
   const renderItems = () => {
     const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
-    return (isLoading ? [...Array(10)] : filtredItems).map((item, index) => (
+    console.log(cartItems)
+    return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
       <Card
         key={index}
         onFavourite={(obj) => onAddToFavourite(obj)}
         onPlus={(obj) => onAddToCart(obj)}
-        added={cartItems.some((obj) => Number(obj.id) === Number(item.id))}
+        added={cartItems.some( obj => Number(obj.id) === Number(item.id))}
         loading={isLoading}
         {...item}
       />
