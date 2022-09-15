@@ -3,11 +3,14 @@ import ContentLoader from "react-content-loader";
 import styles from './Card.module.scss'
 
 function Card({ id, title, imageUrl, price, onFavourite, onPlus, favourited = false, added = false, loading = false }) {
-  console.log('added' ,added);
+  // console.log('added', added);
+  // console.log('isAdded', isAdded);
   const [isAdded, setIsAdded] = React.useState(added)
-  console.log('isAdded' ,isAdded);
   const [isFavourite, setIsFavourite] = React.useState(favourited)
-  
+  React.useEffect(() => {
+    
+  }, [])
+
   const onClickPlus = () => {
     onPlus({ id, title, imageUrl, price});
     setIsAdded(!isAdded);
