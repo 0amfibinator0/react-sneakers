@@ -1,16 +1,16 @@
+import React from 'react';
 import Card from '../components/Card';
 
-function Home({items, cartItems, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart, isLoading}) {
-  
+function Home({items, searchValue, setSearchValue, onChangeSearchInput, onAddToFavourite, onAddToCart, isLoading}) {
   const renderItems = () => {
-    const filtredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
-    console.log(cartItems)
+    const filtredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
     return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
       <Card
         key={index}
         onFavourite={(obj) => onAddToFavourite(obj)}
         onPlus={(obj) => onAddToCart(obj)}
-        added={cartItems.some( obj => Number(obj.id) === Number(item.id))}
         loading={isLoading}
         {...item}
       />
